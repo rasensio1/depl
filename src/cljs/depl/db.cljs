@@ -1,4 +1,5 @@
 (ns depl.db)
 
 (def default-db
-  {:name "re-frame"})
+  {:name "re-frame"
+   :counter 0})
