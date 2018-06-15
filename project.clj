@@ -9,6 +9,7 @@
                  [garden "1.3.5"]
                  [ns-tracker "0.3.1"]
                  [compojure "1.5.0"]
+                 [cljs-http "0.1.45"]
                  [yogthos/config "0.8"]
                  [ring "1.4.0"]]
 

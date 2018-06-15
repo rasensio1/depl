@@ -10,3 +10,8 @@
  ::counter
  (fn [db _]
    (:counter db)))
+
+(rf/reg-sub
+ ::total-count
+ (fn [db _]
+   (:total-count db)))

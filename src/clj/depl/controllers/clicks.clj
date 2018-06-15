@@ -2,4 +2,6 @@
   (:require [depl.models.click :as m-clk]))
 
 (defn create [{{:keys [username]} :params}]
-  (m-clk/create! username))
+  (println "INCOMING CLICK!!! with name: " username)
+  (m-clk/create! username)
+  (-> (m-clk/click-count) first :count str))
