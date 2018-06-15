@@ -1,5 +1,5 @@
-(ns depl.pg.migration
-  (:require [depl.pg.utils :as utils]
+(ns depl.pgres.migration
+  (:require [depl.pgres.utils :as utils]
             [clojure.java.jdbc :as sql]))
 
 (defn migrated? []

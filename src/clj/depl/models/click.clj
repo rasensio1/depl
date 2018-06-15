@@ -1,6 +1,6 @@
 (ns depl.models.click
   (:require [clojure.java.jdbc :as sql]
-            [depl.pg.utils :as ut]))
+            [depl.pgres.utils :as ut]))
 
 (defn click-count []
   (sql/query ut/db-url ["select count(*) from clicks"]))
