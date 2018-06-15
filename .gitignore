@@ -4,5 +4,6 @@
 /resources/public/js/compiled
 /resources/public/css/
 out
+pg/
 
 .nrepl-port

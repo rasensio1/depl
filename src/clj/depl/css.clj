@@ -2,5 +2,4 @@
   (:require [garden.def :refer [defstyles]]))
 
 (defstyles screen
-  [:.section {:padding "30px"}]
-)
+  [:.section {:padding "30px"}])

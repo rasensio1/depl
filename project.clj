@@ -1,6 +1,8 @@
 (defproject depl "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.10.238"]
+                 [org.clojure/java.jdbc "0.6.1"]
+                 [org.postgresql/postgresql "9.4-1201-jdbc41"]
                  [reagent "0.7.0"]
                  [re-frame "0.10.5"]
                  [secretary "1.2.3"]
@@ -78,6 +80,7 @@
   :aot [depl.server]
 
   :uberjar-name "depl.jar"
+  :ring {:init depl/pg/migration/migrate}
 
   :prep-tasks [["cljsbuild" "once" "min"]["garden" "once"] "compile"]
   )
