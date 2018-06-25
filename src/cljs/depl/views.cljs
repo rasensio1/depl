@@ -15,8 +15,7 @@
     [:div [:h2 "Counter"]
      [:h2 (str @count)]
      [:button {:on-click (fn [e]
-                           (rf/dispatch [::events/inc-counter])
-                           (rf/dispatch [::events/inc-total "some-name"]))}]]))
+                           (rf/dispatch [::events/inc-counter "somename"]))}]]))
 
 (defn home-panel []
   [:div.section

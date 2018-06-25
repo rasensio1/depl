@@ -15,20 +15,30 @@
  (fn [db [_ active-panel]]
    (assoc db :active-panel active-panel)))
 
-(rf/reg-event-db
+;; increments personal counter and dispatches
+;; event to increment total counter
+(rf/reg-event-fx
  ::inc-counter
- (fn [db _]
-   (update db :counter inc)))
+ (fn [{:keys [db]} [_ username]]
+   (println "DB HERE " db)
+   {:db (update db :counter inc)
+    :dispatch [::inc-total username]}))
 
-
-
-;; I didn't do this part right...
-(defn inc-backend-counter [cofx event]
-  (go (let [response (<! (http/post "http://localhost:3000/clicks"
-                                    {:with-credentials? false
-                                     :query-params {:username "okyeah"}}))]
-        (println (str "RESPONSE OF CALL " response)))))
-
+;; used as a callback to decrement personal counter
+;; if update to total counter fails
 (rf/reg-event-db
+ ::dec-counter
+ (fn [db _]
+   (update db :counter dec)))
+
+(rf/reg-event-fx
  ::inc-total
- inc-backend-counter)
+ (fn [db [_ username]]
+   (go (let [response (<! (http/post "http://localhost:3000/clicks"
+                                     {:with-credentials? false
+                                      :query-params {:username username}}))]
+         (if (= 200 (:status response))
+           nil
+           (rf/dispatch [::dec-counter]))))
+   {}))
+
