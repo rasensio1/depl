@@ -7,8 +7,7 @@
 (defn total-count []
   (let [total-count (rf/subscribe [::subs/total-count])]
     [:div [:h3 "Total Count"]
-     [:p @total-count]])
-  )
+     [:p @total-count]]))
 
 (defn counter []
   (let [count (rf/subscribe [::subs/counter])]

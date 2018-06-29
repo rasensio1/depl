@@ -11,7 +11,8 @@
                  [compojure "1.5.0"]
                  [cljs-http "0.1.45"]
                  [yogthos/config "0.8"]
-                 [ring "1.4.0"]]
+                 [ring "1.4.0"]
+                 [ring/ring-json "0.4.0"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-garden "0.2.8"]]

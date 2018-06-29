@@ -3,7 +3,7 @@
             [depl.pgres.utils :as ut]))
 
 (defn click-count []
-  (sql/query ut/db-url ["select count(*) from clicks"]))
+  (first (sql/query ut/db-url ["select count(*) from clicks"])))
 
 (defn create! [user]
   (sql/insert! ut/db-url :clicks [:username] [user]))
