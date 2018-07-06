@@ -7,7 +7,7 @@
             ))
 
 (defn total-count-query! [& {:keys [on-success]}]
-  (go (let [response (<! (http/get "http://localhost:3000/clicks/count"
+  (go (let [response (<! (http/get "/clicks/count"
                                    {:with-credentials? false}))]
         (if (= 200 (:status response))
           (on-success response)
@@ -49,7 +49,7 @@
 (rf/reg-event-fx
  ::inc-total
  (fn [db [_ username]]
-   (go (let [response (<! (http/post "http://localhost:3000/clicks"
+   (go (let [response (<! (http/post "/clicks"
                                      {:with-credentials? false
                                       :query-params {:username username}}))]
          (if (= 200 (:status response))
